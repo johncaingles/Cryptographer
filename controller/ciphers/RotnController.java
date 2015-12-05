@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -29,10 +29,14 @@ public class RotnController implements ICipherController {
                 
                 input = Arrays.toString(inputStringArr);
                 
-                inputCharArr = input.replaceAll("[^A-Za-z0-9]+","").toUpperCase().toCharArray();
+                inputCharArr = input.toUpperCase().toCharArray();
+                
+                System.out.println((int)'a' + " " + (int)'A');
                 
                 for(int i = 0; i < inputCharArr.length; i++){
-                    inputCharArr[i] = (char) (inputCharArr[i]+n);
+                    if(Character.isLetter(inputCharArr[i])){
+                            inputCharArr[i] = (char) (inputCharArr[i]+((inputCharArr[i]+n > 90) ? n : n));
+                    }
                 }
                 
 		return new String(inputCharArr);
