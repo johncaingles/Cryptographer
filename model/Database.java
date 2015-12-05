@@ -17,6 +17,7 @@ public class Database{
 		listOfCiphers.add("Hill Cipher");
                 listOfCiphers.add("ROT-N");
                 listOfCiphers.add("Four-square Cipher");
+        listOfCiphers.add("Caesar Cipher");
                 
 	}
 	
