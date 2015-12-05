@@ -15,6 +15,7 @@ public class Database{
 	private void populateListOfCiphers() {
 		/** add new cipher names here */
 		listOfCiphers.add("Hill Cipher");
+                listOfCiphers.add("ROT-N");
 	}
 	
 	public ArrayList<String> getListOfCiphers() {
