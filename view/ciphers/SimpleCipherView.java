@@ -42,7 +42,7 @@ public class SimpleCipherView extends JPanel implements ActionListener, KeyListe
 		btnEncrypt.addActionListener(this);
 		add(btnEncrypt);
 		
-		btnDecrypt = new JButton("Encrypt");
+		btnDecrypt = new JButton("Decrypt");
 		btnDecrypt.setBounds(323, 191, 136, 36);
 		btnDecrypt.addActionListener(this);
 		add(btnDecrypt);

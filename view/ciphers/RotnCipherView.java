@@ -42,7 +42,7 @@ private MainFrame mainFrame;
 		btnEncrypt.addActionListener(this);
 		add(btnEncrypt);
 		
-		btnDecrypt = new JButton("Encrypt");
+		btnDecrypt = new JButton("Decrypt");
 		btnDecrypt.setBounds(323, 191, 136, 36);
 		btnDecrypt.addActionListener(this);
 		add(btnDecrypt);
@@ -74,7 +74,7 @@ private MainFrame mainFrame;
 			setOutputTxt(output);
 		} else
 		if(ae.getSource() == btnDecrypt) {
-			String input = getInputTxt();
+			String input = getNInput()+ " " + getInputTxt();
 			String output = controller.decrypt(input);
 			setOutputTxt(output);
 		}
