@@ -12,7 +12,7 @@ import controller.ICipherController;
  * @author Zehcnas
  */
 public class FoursquareCipherController implements ICipherController {
-     char[][] plainTextSquare1;
+    char[][] plainTextSquare1;
     char[][] plainTextSquare2; 
     char[][] cipherTextSquare1;
     char[][] cipherTextSquare2;
@@ -20,7 +20,7 @@ public class FoursquareCipherController implements ICipherController {
     char cipherTextLetters;
     String[] encryptedMessage;
     
-    public dota(){
+    public FoursquareCipherController(){
         plainTextSquare1 = new char[5][5]; 
         plainTextSquare2 = new char[5][5]; 
         cipherTextSquare1 = new char[5][5]; ;
@@ -209,16 +209,47 @@ public class FoursquareCipherController implements ICipherController {
                    row = 10; // to exit loop
                    col = 10; // to exit loop
                }
-           if(row != 10){
-               location[0] = -1;
-               location[1] = -1;
-           }
         }   
        
         }
        return location;
    } 
    
+   
+ private int[] getCipherTextLetterLocation1(String letter){
+       int[] location = new int[2];
+       int row, col;
+        for(row = 0; row <= 4; row++){
+            for(col = 0; col <= 4; col++){
+               if(String.valueOf(cipherTextSquare1[row][col]).equals(letter)){
+                   location[0] = row;
+                   location[1] = col;
+                   row = 10; // to exit loop
+                   col = 10; // to exit loop
+               }
+        }   
+       
+        }
+       return location;
+   } 
+ 
+ 
+  private int[] getCipherTextLetterLocation2(String letter){
+       int[] location = new int[2];
+       int row, col;
+        for(row = 0; row <= 4; row++){
+            for(col = 0; col <= 4; col++){
+               if(String.valueOf(cipherTextSquare2[row][col]).equals(letter)){
+                   location[0] = row;
+                   location[1] = col;
+                   row = 10; // to exit loop
+                   col = 10; // to exit loop
+               }
+        }   
+       
+        }
+       return location;
+   } 
     
     private String[] getCipher(String[] input){
         String[] cipher = input;
@@ -246,23 +277,23 @@ public class FoursquareCipherController implements ICipherController {
             /* to get 1st cipher letter: use the row of the 1st plain 
                text letter and the col of the 2nd plain text letter 
                and using cipherTextSquare1 */
-            if(row1 != -1 && col2 != -1){
+     
                 digraph = String.valueOf(cipherTextSquare1[row1][col2]);
                 
-            }
+ 
             
             /* to get 2st cipher letter: use the row of the 2nd plain 
             text letter and the col of the 1st plain text letter 
             and using cipherTextSquare1 */
-               if(row2 != -1 && col1 != -1){
+   
                 digraph = digraph + String.valueOf(cipherTextSquare2[row2][col1]);
                 
-                }
+      
             
           
                
             cipher[i] = digraph;
-            
+            System.out.println("digraph: " + digraph);
             digraph = "";
             
         }
@@ -272,23 +303,26 @@ public class FoursquareCipherController implements ICipherController {
     }
     
     
-    private String[] getCipher2(String[] input){
+  private String[] getCipher2(String[] input){
         String[] cipher = input;
         String digraph = "";
         int i, row1, col1, row2, col2;
         int[] letterLocation;
         
+       
+        
         for(i = 0; i < cipher.length; i++){
             
             //first letter of digraph - > input[i].charAt(0); 
             //locate first letter in first plainTextSquare
-            letterLocation = getPlainTextLetterLocation(String.valueOf(input[i].charAt(0)));
+            letterLocation = getCipherTextLetterLocation1(String.valueOf(input[i].charAt(0)));
             row1 = letterLocation[0];
             col1 = letterLocation[1];
+   
             
             //last letter of digraph - > input[i].charAt(1)
             //locate first letter in first plainTextSquare
-            letterLocation = getPlainTextLetterLocation(String.valueOf(input[i].charAt(1)));
+            letterLocation = getCipherTextLetterLocation2(String.valueOf(input[i].charAt(1)));
             row2 = letterLocation[0];
             col2 = letterLocation[1];
            
@@ -298,18 +332,18 @@ public class FoursquareCipherController implements ICipherController {
             /* to get 1st cipher letter: use the row of the 1st plain 
                text letter and the col of the 2nd plain text letter 
                and using cipherTextSquare1 */
-            if(row1 != -1 && col2 != -1){
-                digraph = String.valueOf(cipherTextSquare1[row1][col2]);
+          
+                digraph = String.valueOf(plainTextSquare1[row1][col2]);
                 
-            }
+    
             
             /* to get 2st cipher letter: use the row of the 2nd plain 
             text letter and the col of the 1st plain text letter 
             and using cipherTextSquare1 */
-               if(row2 != -1 && col1 != -1){
-                digraph = digraph + String.valueOf(cipherTextSquare2[row2][col1]);
+         
+                digraph = digraph + String.valueOf(plainTextSquare2[row2][col1]);
                 
-                }
+           
             
           
                
@@ -326,10 +360,11 @@ public class FoursquareCipherController implements ICipherController {
     
     public void displayDigraphs(String[] digraphs){
         for(int i = 0; i < digraphs.length; i++){
-            System.out.print(digraphs[i] + " ");
+            System.out.println("DIGRAPHS: " + digraphs[i]);
         }
     }
 
+    
     @Override
     public String encrypt(String input) {
        String output = "";
@@ -362,13 +397,26 @@ public class FoursquareCipherController implements ICipherController {
     @Override
     public String decrypt(String input) {
        String output = "";
-       
-       return output;
-    }
-    
-    
+       String[] digraphs, ciphers;
+       String[] decryptedMessage;
+       int i = 0;
+
+       input = input.replaceAll("\\s","");
 
        
-     
+       digraphs = getDigraphs(input);
+       decryptedMessage = getCipher2(digraphs);
+       
+       
+       do{
+           System.out.println("decrmsg:" + decryptedMessage[i]);
+           output = output + decryptedMessage[i] + " ";
+           i++;
+       }while(i < decryptedMessage.length);
+       
+       output = output.replaceAll("\\s","");
+    
+        return output;
+    }
     
 }
