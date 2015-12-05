@@ -402,9 +402,11 @@ public class FoursquareCipherController implements ICipherController {
        int i = 0;
 
        input = input.replaceAll("\\s","");
-
+       input = input.toUpperCase();
        
        digraphs = getDigraphs(input);
+       System.out.println("DIS: ");
+       displayDigraphs(digraphs);
        decryptedMessage = getCipher2(digraphs);
        
        

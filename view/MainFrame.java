@@ -3,6 +3,7 @@ package view;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import controller.ciphers.CaesarCipherController;
 import controller.ciphers.FoursquareCipherController;
 import controller.ciphers.HillCipherController;
 import controller.ciphers.RotnController;
@@ -45,9 +46,12 @@ public class MainFrame extends JFrame {
 		if(view.equals("ROT-N")) {
 			currentPanel = new KeyCipherView(this, new RotnController());
 		} else
-                if(view.equals("Four-square Cipher")) {
-			currentPanel = new FoursquareCipherView(this, new FoursquareCipherController());
-                }
+        if(view.equals("Four-square Cipher")) {
+        	currentPanel = new FoursquareCipherView(this, new FoursquareCipherController());
+        } else
+		if(view.equals("Caesar Cipher")) {
+			currentPanel = new KeyCipherView(this, new CaesarCipherController());
+		} else
 		frameRevalidate();
 		this.setContentPane((JPanel) currentPanel);
 	
