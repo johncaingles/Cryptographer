@@ -29,12 +29,12 @@ public class Database{
 			}
 			startValue++;
 		}
-		for(int i=0; i<26; i++) {
-			for(int j=0; j<26; j++) {
-				System.out.printf(tabulaRecta[i][j] + " ");
-			}
-			System.out.println();
-		}
+//		for(int i=0; i<26; i++) {
+//			for(int j=0; j<26; j++) {
+//				System.out.printf(tabulaRecta[i][j] + " ");
+//			}
+//			System.out.println();
+//		}
 	}
 
 	private void populateListOfCiphers() {

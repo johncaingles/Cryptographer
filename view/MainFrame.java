@@ -48,7 +48,7 @@ public class MainFrame extends JFrame {
 			currentPanel = new KeyCipherView(this, new RotnController());
 		} else
         if(view.equals("Four-square Cipher")) {
-        	currentPanel = new FoursquareCipherView(this, new FoursquareCipherController());
+        	currentPanel = new SimpleCipherView(this, new FoursquareCipherController());
         } else
 		if(view.equals("Caesar Cipher")) {
 			currentPanel = new KeyCipherView(this, new CaesarCipherController());
