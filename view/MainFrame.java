@@ -28,8 +28,8 @@ public class MainFrame extends JFrame {
 	public void renderView(String view) {
 		/** continue if else statements here for new ciphers
 		 * format
-		 * if(view.equals("CIPHER NAME THAT YOU ADDED TO listOfCiphers DATABASE.java")) {
-			currentPanel = new SimpleCipherView(this, new NewCipherControllerNAME()<--that you created);
+		 * if(view.equals("CIPHER NAME THAT YOU ADDED TO listOfCiphers from DATABASE.java")) {
+			currentPanel = new SimpleCipherView(this, new NewCipherController()<--create this after);
 			}
 		*/
 		if(view.equals("Main Menu")) {
