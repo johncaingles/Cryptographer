@@ -4,9 +4,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import controller.ciphers.HillCipherController;
-import controller.ciphers.ROTNController;
+import controller.ciphers.RotnController;
 import model.Database;
 import view.ciphers.SimpleCipherView;
+import view.ciphers.RotnCipherView;
 
 public class MainFrame extends JFrame {
 
@@ -40,7 +41,7 @@ public class MainFrame extends JFrame {
 			currentPanel = new SimpleCipherView(this, new HillCipherController());
 		} else
 		if(view.equals("ROT-N")) {
-			currentPanel = new SimpleCipherView(this, new ROTNController());
+			currentPanel = new RotnCipherView(this, new RotnController());
 		}
 		
 		frameRevalidate();
