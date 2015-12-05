@@ -3,6 +3,7 @@ package view;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import controller.ciphers.BeaufortCipherController;
 import controller.ciphers.CaesarCipherController;
 import controller.ciphers.FoursquareCipherController;
 import controller.ciphers.HillCipherController;
@@ -51,7 +52,10 @@ public class MainFrame extends JFrame {
         } else
 		if(view.equals("Caesar Cipher")) {
 			currentPanel = new KeyCipherView(this, new CaesarCipherController());
-		} else
+		} else 
+		if(view.equals("Beaufort Cipher")) {
+			currentPanel = new KeyCipherView(this, new BeaufortCipherController(model));
+		}
 		frameRevalidate();
 		this.setContentPane((JPanel) currentPanel);
 	
