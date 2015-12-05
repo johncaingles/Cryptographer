@@ -46,6 +46,7 @@ public class MainMenuView extends JPanel implements ActionListener, KeyListener 
 		btnChooseCipher = new JButton("Choose Cipher");
 		btnChooseCipher.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnChooseCipher.setBounds(368, 262, 156, 23);
+		btnChooseCipher.addActionListener(this);
 		add(btnChooseCipher);
 		
 		controller = new MainMenuController(this, model);

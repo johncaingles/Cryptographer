@@ -3,17 +3,20 @@ package controller.ciphers;
 import controller.ICipherController;
 
 public class HillCipherController implements ICipherController {
-
+	
+	private String input;
+	private String output;
+	
 	@Override
-	public String getEncrypted() {
-		// TODO Auto-generated method stub
-		return null;
+	public String encrypt(String input) {
+		output = input + "fuck life this is encrypted";
+		return output;
 	}
 
 	@Override
-	public String getDecrypted() {
-		// TODO Auto-generated method stub
-		return null;
+	public String decrypt(String input) {
+		output = input + "fuck life this is decrypted";
+		return output;
 	}
 
 }

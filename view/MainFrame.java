@@ -21,17 +21,24 @@ public class MainFrame extends JFrame {
 		
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
+		
+		this.model = model;
 	}
 
 	public void renderView(String view) {
+		/** continue if else statements here for new ciphers
+		 * format
+		 * if(view.equals("CIPHER NAME THAT YOU ADDED TO listOfCiphers DATABASE.java")) {
+			currentPanel = new SimpleCipherView(this, new NewCipherControllerNAME()<--that you created);
+			}
+		*/
 		if(view.equals("Main Menu")) {
-			/** Show Main Menu */
 			currentPanel = new MainMenuView(this, model); 
-		} else 
-		/** cipher views */
+		} else
 		if(view.equals("Hill Cipher")) {
 			currentPanel = new SimpleCipherView(this, new HillCipherController());
 		}
+		
 		frameRevalidate();
 		this.setContentPane((JPanel) currentPanel);
 	}

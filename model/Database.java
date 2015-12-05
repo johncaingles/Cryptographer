@@ -13,6 +13,7 @@ public class Database{
 	}
 
 	private void populateListOfCiphers() {
+		/** add new cipher names here */
 		listOfCiphers.add("Hill Cipher");
 	}
 	

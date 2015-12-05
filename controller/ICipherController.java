@@ -1,6 +1,6 @@
 package controller;
 
 public interface ICipherController {
-	public String getEncrypted();
-	public String getDecrypted();
+	public String encrypt(String input);
+	public String decrypt(String input);
 }
