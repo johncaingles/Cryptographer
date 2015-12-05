@@ -1,0 +1,44 @@
+package view;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import controller.ciphers.HillCipherController;
+import model.Database;
+import view.ciphers.SimpleCipherView;
+
+public class MainFrame extends JFrame {
+
+	private JPanel currentPanel;
+	private Database model;
+	
+	public MainFrame(String appName, Database model) {
+		/** Frame setup */
+		this.setTitle("Cryptographer");
+		this.setResizable(false);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setBounds(0, 0, 683, 434);
+		
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
+	}
+
+	public void renderView(String view) {
+		if(view.equals("Main Menu")) {
+			/** Show Main Menu */
+			currentPanel = new MainMenuView(this, model); 
+		} else 
+		/** cipher views */
+		if(view.equals("Hill Cipher")) {
+			currentPanel = new SimpleCipherView(this, new HillCipherController());
+		}
+		frameRevalidate();
+		this.setContentPane((JPanel) currentPanel);
+	}
+	
+	private void frameRevalidate() {
+		validate();
+		repaint();
+		setVisible(true);
+	}
+}
