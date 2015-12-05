@@ -47,10 +47,10 @@ public class MainFrame extends JFrame {
 		} else
                 if(view.equals("Four-square Cipher")) {
 			currentPanel = new FoursquareCipherView(this, new FoursquareCipherController());
-		
+                }
 		frameRevalidate();
 		this.setContentPane((JPanel) currentPanel);
-	}
+	
                 
         }
 	

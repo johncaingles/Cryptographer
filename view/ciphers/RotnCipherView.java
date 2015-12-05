@@ -22,7 +22,7 @@ private MainFrame mainFrame;
 	private JButton btnEncrypt;
 	private JButton btnDecrypt;
 	private JButton btnBack;
-	private JTextField txtfldNinput;
+	private JTextField txtfldKeyInput;
 	
 	public RotnCipherView(MainFrame mainFrame, ICipherController controller) {
 		this.mainFrame = mainFrame;
@@ -58,23 +58,23 @@ private MainFrame mainFrame;
 		btnBack.addActionListener(this);
 		add(btnBack);
 		
-		txtfldNinput = new JTextField();
-		txtfldNinput.setText("fuck you arvin");
-		txtfldNinput.setBounds(436, 88, 73, 68);
-		add(txtfldNinput);
-		txtfldNinput.setColumns(10);
+		txtfldKeyInput = new JTextField();
+		txtfldKeyInput.setText("fuck you arvin");
+		txtfldKeyInput.setBounds(436, 88, 73, 68);
+		add(txtfldKeyInput);
+		txtfldKeyInput.setColumns(10);
 	}
 
 	/** ACTION LISTNERLKSAJDF */
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource() == btnEncrypt) {
-			String input = getNInput()+ " " + getInputTxt();
+			String input = getKeyInput()+ " " + getInputTxt();
 			String output = controller.encrypt(input);
 			setOutputTxt(output);
 		} else
 		if(ae.getSource() == btnDecrypt) {
-			String input = getNInput()+ " " + getInputTxt();
+			String input = getKeyInput()+ " " + getInputTxt();
 			String output = controller.decrypt(input);
 			setOutputTxt(output);
 		}
@@ -83,8 +83,8 @@ private MainFrame mainFrame;
 		}
 	}
 	
-	private String getNInput() {
-		return txtfldNinput.getText();
+	private String getKeyInput() {
+		return txtfldKeyInput.getText();
 	}
 
 	private void setOutputTxt(String output) {
