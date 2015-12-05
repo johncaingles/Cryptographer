@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import controller.ICipherController;
 import view.MainFrame;
 
-public class RotnCipherView extends JPanel implements ActionListener, KeyListener {
+public class KeyCipherView extends JPanel implements ActionListener, KeyListener {
 private MainFrame mainFrame;
 	
 	/**Controller*/
@@ -24,7 +24,7 @@ private MainFrame mainFrame;
 	private JButton btnBack;
 	private JTextField txtfldKeyInput;
 	
-	public RotnCipherView(MainFrame mainFrame, ICipherController controller) {
+	public KeyCipherView(MainFrame mainFrame, ICipherController controller) {
 		this.mainFrame = mainFrame;
 		this.setBounds(0, 0, 683, 434);
 		setLayout(null);

@@ -8,7 +8,7 @@ import controller.ciphers.HillCipherController;
 import controller.ciphers.RotnController;
 import model.Database;
 import view.ciphers.SimpleCipherView;
-import view.ciphers.RotnCipherView;
+import view.ciphers.KeyCipherView;
 import view.ciphers.FoursquareCipherView;
 
 public class MainFrame extends JFrame {
@@ -43,7 +43,7 @@ public class MainFrame extends JFrame {
 			currentPanel = new SimpleCipherView(this, new HillCipherController());
 		} else
 		if(view.equals("ROT-N")) {
-			currentPanel = new RotnCipherView(this, new RotnController());
+			currentPanel = new KeyCipherView(this, new RotnController());
 		} else
                 if(view.equals("Four-square Cipher")) {
 			currentPanel = new FoursquareCipherView(this, new FoursquareCipherController());
