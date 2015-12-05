@@ -16,6 +16,8 @@ public class Database{
 		/** add new cipher names here */
 		listOfCiphers.add("Hill Cipher");
                 listOfCiphers.add("ROT-N");
+                listOfCiphers.add("Four-square Cipher");
+                
 	}
 	
 	public ArrayList<String> getListOfCiphers() {

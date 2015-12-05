@@ -42,7 +42,9 @@ public class MainFrame extends JFrame {
 		} else
 		if(view.equals("ROT-N")) {
 			currentPanel = new RotnCipherView(this, new RotnController());
-		}
+		} else
+                if(view.equals("ROT-N")) {
+			currentPanel = new FoursquareCipherView(this, new FoursquareCipherController());
 		
 		frameRevalidate();
 		this.setContentPane((JPanel) currentPanel);
