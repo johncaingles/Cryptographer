@@ -8,6 +8,7 @@ import controller.ciphers.CaesarCipherController;
 import controller.ciphers.FoursquareCipherController;
 import controller.ciphers.HillCipherController;
 import controller.ciphers.RotnController;
+import controller.ciphers.VigenereCipherController;
 import model.Database;
 import view.ciphers.SimpleCipherView;
 import view.ciphers.KeyCipherView;
@@ -55,6 +56,9 @@ public class MainFrame extends JFrame {
 		} else 
 		if(view.equals("Beaufort Cipher")) {
 			currentPanel = new KeyCipherView(this, new BeaufortCipherController(model));
+		} else
+		if(view.equals("Vigenere Cipher")){
+            currentPanel = new KeyCipherView(this, new VigenereCipherController(model));
 		}
 		frameRevalidate();
 		this.setContentPane((JPanel) currentPanel);

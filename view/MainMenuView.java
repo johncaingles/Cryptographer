@@ -24,7 +24,7 @@ public class MainMenuView extends JPanel implements ActionListener, KeyListener 
 	private MainMenuController controller;
 	
 	/** Panel components */
-	private JLabel lblTitle;
+	private JLabel lblDevs;
 	private JComboBox cmbbxCipherList;
 	private JButton btnChooseCipher;
 	
@@ -33,13 +33,14 @@ public class MainMenuView extends JPanel implements ActionListener, KeyListener 
 		this.setBounds(0, 0, 683, 434);
 		setLayout(null);
 		
-		lblTitle = new JLabel("Cryptographer");
-		lblTitle.setFont(new Font("Britannic Bold", Font.PLAIN, 51));
-		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitle.setBounds(10, 25, 663, 147);
-		add(lblTitle);
+		lblDevs = new JLabel("Cryptographer");
+		lblDevs.setFont(new Font("Britannic Bold", Font.PLAIN, 51));
+		lblDevs.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDevs.setBounds(10, 25, 663, 147);
+		add(lblDevs);
 		
 		cmbbxCipherList = new JComboBox(model.getListOfCiphers().toArray());
+		cmbbxCipherList.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		cmbbxCipherList.setBounds(163, 263, 126, 20);
 		add(cmbbxCipherList);
 		
@@ -50,6 +51,12 @@ public class MainMenuView extends JPanel implements ActionListener, KeyListener 
 		add(btnChooseCipher);
 		
 		controller = new MainMenuController(this, model);
+		
+		JLabel lblCainglesMedina = new JLabel("By Caingles, Lim, Medina, Sanchez");
+		lblCainglesMedina.setFont(new Font("Monotype Corsiva", Font.PLAIN, 19));
+		lblCainglesMedina.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCainglesMedina.setBounds(141, 158, 383, 14);
+		add(lblCainglesMedina);
 	}
 
 	/** START OF ACTION LISTENERS */

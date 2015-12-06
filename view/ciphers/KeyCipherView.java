@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -11,6 +13,7 @@ import javax.swing.JTextField;
 
 import controller.ICipherController;
 import view.MainFrame;
+import javax.swing.SwingConstants;
 
 public class KeyCipherView extends JPanel implements ActionListener, KeyListener {
 private MainFrame mainFrame;
@@ -23,8 +26,12 @@ private MainFrame mainFrame;
 	private JButton btnDecrypt;
 	private JButton btnBack;
 	private JTextField txtfldKeyInput;
+	private boolean hasBeenClicked1;
+	private boolean hasBeenClicked2;
 	
 	public KeyCipherView(MainFrame mainFrame, ICipherController controller) {
+		hasBeenClicked1 = false;
+		hasBeenClicked2 = false;
 		this.mainFrame = mainFrame;
 		this.setBounds(0, 0, 683, 434);
 		setLayout(null);
@@ -32,7 +39,17 @@ private MainFrame mainFrame;
 		this.controller = controller;
 		
 		txtfldInput = new JTextField();
-		txtfldInput.setText("PUT YO SHIT HERE");
+		txtfldInput.setHorizontalAlignment(SwingConstants.CENTER);
+		txtfldInput.setText("Enter your message here");
+		txtfldInput.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+            	if(!hasBeenClicked1) {
+            		txtfldInput.setText("");
+            		hasBeenClicked1 = true;
+            	}
+            }
+        });
 		txtfldInput.setBounds(124, 88, 302, 68);
 		add(txtfldInput);
 		txtfldInput.setColumns(10);
@@ -48,7 +65,8 @@ private MainFrame mainFrame;
 		add(btnDecrypt);
 		
 		txtfldOutput = new JTextField();
-		txtfldOutput.setText("THIS BE THE ANSWER");
+		txtfldOutput.setHorizontalAlignment(SwingConstants.CENTER);
+		txtfldOutput.setText("Result");
 		txtfldOutput.setColumns(10);
 		txtfldOutput.setBounds(124, 283, 385, 68);
 		add(txtfldOutput);
@@ -59,7 +77,17 @@ private MainFrame mainFrame;
 		add(btnBack);
 		
 		txtfldKeyInput = new JTextField();
-		txtfldKeyInput.setText("fuck you arvin");
+		txtfldKeyInput.setHorizontalAlignment(SwingConstants.CENTER);
+		txtfldKeyInput.setText("Key");
+		txtfldKeyInput.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+            	if(!hasBeenClicked2) {
+            		txtfldKeyInput.setText("");
+            		hasBeenClicked2 = true;
+            	}
+            }
+        });
 		txtfldKeyInput.setBounds(436, 88, 73, 68);
 		add(txtfldKeyInput);
 		txtfldKeyInput.setColumns(10);

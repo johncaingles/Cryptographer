@@ -39,11 +39,12 @@ public class Database{
 
 	private void populateListOfCiphers() {
 		/** add new cipher names here */
-		listOfCiphers.add("Hill Cipher");
                 listOfCiphers.add("ROT-N");
                 listOfCiphers.add("Four-square Cipher");
-        listOfCiphers.add("Caesar Cipher");
         listOfCiphers.add("Beaufort Cipher");
+        listOfCiphers.add("Vigenere Cipher");
+        listOfCiphers.add("Caesar Cipher");
+		listOfCiphers.add("Hill Cipher");
                 
 	}
 	

@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
@@ -11,6 +13,8 @@ import controller.ICipherController;
 import view.MainFrame;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
+import java.awt.Color;
 
 public class SimpleCipherView extends JPanel implements ActionListener, KeyListener {
 
@@ -23,8 +27,11 @@ public class SimpleCipherView extends JPanel implements ActionListener, KeyListe
 	private JButton btnEncrypt;
 	private JButton btnDecrypt;
 	private JButton btnBack;
+	private boolean hasBeenClicked;
 	
 	public SimpleCipherView(MainFrame mainFrame, ICipherController controller) {
+		hasBeenClicked = false;
+		setBackground(Color.CYAN);
 		this.mainFrame = mainFrame;
 		this.setBounds(0, 0, 683, 434);
 		setLayout(null);
@@ -32,7 +39,17 @@ public class SimpleCipherView extends JPanel implements ActionListener, KeyListe
 		this.controller = controller;
 		
 		txtfldInput = new JTextField();
-		txtfldInput.setText("PUT YO SHIT HERE");
+		txtfldInput.setHorizontalAlignment(SwingConstants.CENTER);
+		txtfldInput.setText("Type your message here");
+		txtfldInput.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+            	if(!hasBeenClicked) {
+            		txtfldInput.setText("");
+            		hasBeenClicked = true;
+            	}
+            }
+        });
 		txtfldInput.setBounds(124, 88, 385, 68);
 		add(txtfldInput);
 		txtfldInput.setColumns(10);
@@ -48,7 +65,8 @@ public class SimpleCipherView extends JPanel implements ActionListener, KeyListe
 		add(btnDecrypt);
 		
 		txtfldOutput = new JTextField();
-		txtfldOutput.setText("THIS BE THE ANSWER");
+		txtfldOutput.setHorizontalAlignment(SwingConstants.CENTER);
+		txtfldOutput.setText("Result");
 		txtfldOutput.setColumns(10);
 		txtfldOutput.setBounds(124, 283, 385, 68);
 		add(txtfldOutput);
